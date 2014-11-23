@@ -4,6 +4,19 @@ $(function () {
     
     // geolocation
     var user_lat, user_long, obCity, obLocality;
+
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++) 
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam) 
+            {
+                return sParameterName[1];
+            }
+        }
+    }
     
     // Проверяем есть ли геолокация
     function getLocation () {
@@ -41,7 +54,8 @@ $(function () {
             .done(function(data) {
                 obLocality = data;
                 console.log('obLocality:', data);
-                render(obLocality)
+                render(obLocality);
+                saveLocalityToLocalStorage(obLocality);
             })
             .fail(function() {
                 console.log('error getCity');
@@ -56,6 +70,8 @@ $(function () {
     }
     
     function render(obLocality) {
+        obLocality['localStorage'] = localStorage;
+        console.log(obLocality);
         renderEngine(obLocality, '#template-forecast-small__data', '.forecast-small__data');
         renderEngine(obLocality, '#template-forecast-small__options', '.forecast-small__options');
         renderEngine(obLocality, '#template-forecast-shortly', '.forecast__data');
@@ -87,7 +103,6 @@ $(function () {
     });
     
     Handlebars.registerHelper('slice', function(context, options) {
-        
         var ret = "",
             index = 0,
             offset = parseInt(options.hash.offset);
@@ -109,7 +124,6 @@ $(function () {
 
         return ret;
     });
-    
 
     // 
     // ACTIONS
@@ -140,7 +154,13 @@ $(function () {
 
     // 
     // INITIAL
-    // 
-    getLocation();
+    //
+
+    var geoid = getUrlParameter('geoid')
+    if (geoid) {
+        getLocality(geoid);
+    } else {
+        getLocation();
+    }
     // getLocality(54); // Екатеринбург по дефолту
 });

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Яндекс.Погода // index.psd</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="../css/style.min.css">
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/handlebars.min.js"></script>
+	<style type="text/css">
+		.cities {
+			margin: 0 auto 40px;
+			width: 960px;
+		}
+
+		ul.cities-list {
+			list-style-type: circle;
+			-webkit-column-count: 4; /* Chrome, Safari, Opera */
+		    -moz-column-count: 4; /* Firefox */
+		    column-count: 4;
+		}
+	</style>
+</head>
+<body>
+
+	<header class="header clearfix">
+
+		<div class="header__logo">
+			<a href="/">
+				<img src="../img/logo.png" alt="Яндекс"/>
+			</a>
+		</div> <!-- /.header__logo -->
+
+		<div class="header__search">
+			<form class="search" action="//ya.ru" method="get">
+				<div class="search__label">Поиск</div>
+				<input class="search__input" type="text"/>
+				<input class="search__button" type="submit" value="Найти"/>
+			</form>
+			<div class="search_info">
+				<!-- Здесь будет выпадайка городов? -->
+			</div>
+		</div> <!-- /.header__search -->
+
+		<div class="header__profile">
+			<div class="profile__userpic">
+				<img src="../img/userpic.png" alt="Sarrah Connor"/>
+			</div>
+			<span class="profile__name">Sarrah Connor</span>
+		</div> <!-- /.header__profile -->
+
+	</header> <!-- /header -->
+
+	<section class="cities clearfix">
+		Загрузка городов <img src="/img/spinner.gif" style="width:20px;">
+	</section>
+
+	<section class="direct clearfix">
+		<a class="direct__link" href="http://direct.yandex.ru">Яндекс.Директ</a>
+		<div class="direct__list clearfix">
+			<div class="ads">
+				<h2 class="ads__title">Студия элитной итальянской мебели</h2>
+				<p class="ads__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, fuga, quasi. Neque ex error mollitia maxime eum enim corrupti voluptatum officia ipsum, impedit quidem ipsam laborum aut excepturi. Nemo, dicta.</p>
+				<a class="ads__link" href="#">Адрес и телефон</a>
+			</div>
+			<div class="ads">
+				<h2 class="ads__title">Студия элитной итальянской мебели</h2>
+				<p class="ads__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, fuga, quasi. Neque ex error mollitia maxime eum enim corrupti voluptatum officia ipsum, impedit quidem ipsam laborum aut excepturi. Nemo, dicta.</p>
+				<a class="ads__link" href="#">Адрес и телефон</a>
+			</div>
+			<div class="ads">
+				<h2 class="ads__title">Студия элитной итальянской мебели</h2>
+				<p class="ads__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, fuga, quasi. Neque ex error mollitia maxime eum enim corrupti voluptatum officia ipsum, impedit quidem ipsam laborum aut excepturi. Nemo, dicta.</p>
+				<a class="ads__link" href="#">Адрес и телефон</a>
+			</div>
+		</div>
+	</section> <!-- /.direct -->
+
+	<div class="services clearfix">
+		<div class="services__item">
+			<h2 class="service__title">Погода на карте</h2>
+			<ul class="service__list">
+				<li class="service__link"><a href="#">Центр России</a></li>
+				<li class="service__link"><a href="#">Россия</a></li>
+				<li class="service__link"><a href="#">Европа</a></li>
+			</ul>
+		</div>
+		<div class="services__item">
+			<h2 class="service__title">Другие прогнозы</h2>
+			<ul class="service__list">
+				<li class="service__link"><a href="#">Гисметео</a></li>
+				<li class="service__link"><a href="#">Гидрометцентр России</a></li>
+				<li class="service__link"><a href="#">Weather.com</a></li>
+			</ul>
+		</div>
+		<div class="services__item">
+			<h2 class="service__title">Погода с собой</h2>
+			<ul class="service__list">
+				<li class="service__link"><a href="#">Информер</a></li>
+				<li class="service__link"><a href="#">Настольный виджет</a></li>
+				<li class="service__link"><a href="#">Погода в вашем браузере</a></li>
+			</ul>
+		</div>
+		<div class="service__title">
+			<h2 class="service__title">Другой вид</h2>
+			<ul class="service__list">
+				<li class="service__link"><a href="#">Виджет для Яндекса</a></li>
+				<li class="service__link"><a href="#">В миниатюре</a></li>
+			</ul>
+		</div>
+	</div> <!-- /.services -->
+
+	<footer class="footer clearfix">
+		<div class="footer__wrap">
+			<ul class="footer__list">
+				<li><a class="footer__link" href="#">Пользовательское соглашение</a></li>
+				<li><a class="footer__link" href="#">Мобильная версия</a></li>
+			</ul>
+			<div class="footer__info">
+				Прогноз погоды: Екатеринбург и еще 12268 городов в 229 странах<br>
+				Данные предоставлены <a href="#">FORECA</a>
+			</div>
+			<ul class="footer__list">
+				<li><a class="footer__link" href="#">Статистика</a></li>
+				<li><a class="footer__link" href="#">Обратная связь</a></li>
+				<li><a class="footer__link" href="#">Реклама</a></li>
+			</ul>
+			<div class="footer__copyright">
+				&copy; 2000 – 2014 «Яндекс»
+			</div>
+		</div>
+	</footer>
+
+<script id="template-cities" type="text/x-handlebars-template">
+	<ul class="cities-list">
+		{{#each cities}}
+			<li><a href="jndex.html?geoid={{ geoid }}">{{ name }}</a></li>
+		{{/each}}
+	</ul>
+</script>
+
+<script>
+	(function(){
+		var cities,
+			url = 'http://ekb.shri14.ru/api/localities/225/cities';
+
+		function SortByName(a, b){
+			var aName = a.name.toLowerCase();
+			var bName = b.name.toLowerCase(); 
+			return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+		}
+
+
+		$.getJSON(url)
+            .done(function(data) {
+                console.log(data);
+
+                var source   = $('#template-cities').html();
+		        var template = Handlebars.compile(source);
+		        var html     = template({'cities':data.sort(SortByName)});
+		        $('.cities').html(html);
+            })
+            .fail(function() {
+                console.log('cities not loaded');
+            });
+	})();
+</script>
+
+	
+</body></html>

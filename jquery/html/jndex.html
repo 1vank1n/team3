@@ -42,15 +42,12 @@
 		<div class="forecast-small fl">
 
 			<div class="forecast-small__options clearfix">
-				<span class="options__title">Определение города <img src="/img/spinner.gif" style="width:20px;"></span>
+				<span class="options__title">Загрузка города <img src="/img/spinner.gif" style="width:20px;"></span>
 				<div class="options__towns">
 					<a href="#" class="towns__title">Другой город</a>
 					<ul class="towns__list hidden">
 						<li class="towns-item">Последние города</li>
-						<li class="towns-item"><a class="towns-item__link towns-item__link-active" href="#">Екатеринбург</a></li>
-						<li class="towns-item"><a class="towns-item__link" href="#">Москва</a></li>
-						<li class="towns-item"><a class="towns-item__link" href="#">Минск</a></li>
-						<li class="towns-item-all"><a class="towns-item__link-all" href="#">Все города</a></li>
+						<li class="towns-item-all"><a class="towns-item__link-all" href="cities.html">Все города</a></li>
 					</ul>
 				</div>
 			</div> <!-- /.forecast-small__options -->
@@ -230,11 +227,7 @@
         <ul class="towns__list hidden">
             <li class="towns-item">Последние города</li>
             <li class="towns-item"><a class="towns-item__link towns-item__link-active" href="#">{{ info.name }}</a></li>
-            <!--
-            <li class="towns-item"><a class="towns-item__link" href="#">Москва</a></li>
-            <li class="towns-item"><a class="towns-item__link" href="#">Минск</a></li>
-            -->
-            <li class="towns-item-all"><a class="towns-item__link-all" href="#">Все города</a></li>
+            <li class="towns-item-all"><a class="towns-item__link-all" href="cities.html">Все города</a></li>
         </ul>
     </div>
 </script>
@@ -252,7 +245,12 @@
                             {{ dayOfWeek date }}
                         {{/if}}
                     </div>
-                    <div class="date">{{ dayFromDate date }}</div>
+                    <div class="date">
+	                    {{ dayFromDate date }}
+	                    {{#if @first}}
+	                    	{{ monthFromDate date }}
+	                    {{/if}}
+                    </div>
                 </li>
                 <li class="forecast-shortly__day">
                     <img class="weather__icon" src="http://ekb.shri14.ru/icons/{{ parts.4.weather_icon }}.svg"/>
